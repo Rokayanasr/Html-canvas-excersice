@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>range</title>
+</head>
+<body>
+    <header>
+        <canvas id="canavas" width="500px" height="500px" style="background-color: black;"></canvas>
+        <input type="color" id="color">
+        <input type="color" id="stroke">
+        <input type="range" id="range">
+        <button id="button" onclick="random()">click me</button>
+    </header>
+
+    <script>
+    let canavas = document.getElementById('canavas');
+    let color = document.getElementById('color');
+    let stroke = document.getElementById('stroke');
+    let range = document.getElementById('range');
+    let brush = canavas.getContext("2d");
+
+
+    function random(){
+            brush.clearRect(0,0,500,500);
+            brush.fillStyle = color.value;
+            brush.strokeStyle = stroke.value;
+            brush.lineWidth = range.value;
+            console.log(range.value);
+            for (let i=0; i<40; i++){
+                brush.beginPath();
+                x = Math.random() *500;
+                y = Math.random() *500;
+                brush.arc(x,y,20,0,2*Math.PI);
+                brush.fill();
+                brush.stroke();
+                brush.closePath
+            }
+        };
+    </script>
+</body>
+</html>
